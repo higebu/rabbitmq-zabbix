@@ -97,8 +97,8 @@ class RabbitMQAPI(object):
 
     def _prepare_data(self, queue, tmpfile):
         '''Prepare the queue data for sending'''
-        for item in ['memory', 'messages', 'messages_unacknowledged',
-                     'consumers']:
+        for item in ['memory', 'messages', 'messages_ready',
+                     'messages_unacknowledged', 'consumers']:
             key = '"rabbitmq.queues[{0},queue_{1},{2}]"'
             key = key.format(queue['vhost'], item, queue['name'])
             value = queue.get(item, 0)
